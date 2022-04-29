@@ -1,7 +1,8 @@
-package com.dxn.github.repos
+package com.dxn.github.repos.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.dxn.github.repos.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
