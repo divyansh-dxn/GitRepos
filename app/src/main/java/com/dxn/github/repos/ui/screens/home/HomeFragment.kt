@@ -23,9 +23,6 @@ class HomeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = HomeFragmentBinding.inflate(inflater, container, false)
-        viewModel.apply {
-
-        }
         return binding.root
     }
 

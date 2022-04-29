@@ -12,11 +12,10 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class DetailsFragment : Fragment() {
+    private val viewModel by hiltNavGraphViewModels<DetailsViewModel>(R.id.nav_graph)
 
     private var _binding: DetailsFragmentBinding? = null
     private val binding get() = _binding!!
-
-    private val viewModel by hiltNavGraphViewModels<DetailsViewModel>(R.id.nav_graph)
 
     override fun onCreateView(
         inflater: LayoutInflater,
