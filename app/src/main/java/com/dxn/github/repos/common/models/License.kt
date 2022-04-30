@@ -1,9 +1,13 @@
-package com.dxn.github.repos.data.models.repo
+package com.dxn.github.repos.common.models
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class License(
     val key: String,
     val name: String,
     val node_id: String,
     val spdx_id: String,
     val url: String
-)
+) : Parcelable

@@ -4,18 +4,23 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material.MaterialTheme
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.ViewCompositionStrategy
 import androidx.fragment.app.Fragment
-import androidx.hilt.navigation.fragment.hiltNavGraphViewModels
-import com.dxn.github.repos.R
+import androidx.navigation.fragment.navArgs
 import com.dxn.github.repos.databinding.DetailsFragmentBinding
+import com.mukesh.MarkDown
 import dagger.hilt.android.AndroidEntryPoint
+import java.net.URL
 
 @AndroidEntryPoint
 class DetailsFragment : Fragment() {
-    private val viewModel by hiltNavGraphViewModels<DetailsViewModel>(R.id.nav_graph)
-
     private var _binding: DetailsFragmentBinding? = null
     private val binding get() = _binding!!
+
+    private val args by navArgs<DetailsFragmentArgs>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -28,7 +33,19 @@ class DetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        viewModel.loadRepo("divyansh-dxn","Agventure")
+        binding.apply {
+            val repo = args.repo
+            markdown.apply {
+                setViewCompositionStrategy(ViewCompositionStrategy.DisposeOnViewTreeLifecycleDestroyed)
+                setContent {
+                    MaterialTheme {
+                        MarkDown(
+                            url = URL("https://raw.githubusercontent.com/${repo.owner.login}/${repo.name}/${repo.default_branch}/README.md"),
+                            modifier = Modifier.fillMaxSize()
+                        )
+                    }
+                }
+            }
+        }
     }
-
 }

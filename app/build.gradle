@@ -3,6 +3,8 @@ plugins {
     id 'org.jetbrains.kotlin.android'
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
+    id 'kotlin-parcelize'
+    id 'androidx.navigation.safeargs.kotlin'
 }
 
 android {
@@ -33,12 +35,21 @@ android {
     }
     buildFeatures {
         viewBinding true
+        compose true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion compose_version
     }
 }
 
 dependencies {
+    implementation 'com.github.mukeshsolanki:MarkdownView-Android:2.0.0'
+
+    implementation "androidx.paging:paging-runtime:$paging_version"
 
     implementation "com.google.dagger:hilt-android:$hilt_version"
+    implementation 'androidx.compose.ui:ui:1.1.1'
+    implementation 'androidx.compose.material:material:1.1.1'
     kapt "com.google.dagger:hilt-compiler:$hilt_version"
 
     implementation "io.coil-kt:coil:$coil_version"

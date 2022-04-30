@@ -1,5 +1,9 @@
-package com.dxn.github.repos.data.models.repo
+package com.dxn.github.repos.common.models
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class Repo(
     val allow_forking: Boolean,
     val archive_url: String,
@@ -17,7 +21,7 @@ data class Repo(
     val created_at: String,
     val default_branch: String,
     val deployments_url: String,
-    val description: Any,
+    val description: String,
     val disabled: Boolean,
     val downloads_url: String,
     val events_url: String,
@@ -35,7 +39,7 @@ data class Repo(
     val has_pages: Boolean,
     val has_projects: Boolean,
     val has_wiki: Boolean,
-    val homepage: Any,
+    val homepage: String?,
     val hooks_url: String,
     val html_url: String,
     val id: Int,
@@ -50,7 +54,7 @@ data class Repo(
     val license: License,
     val merges_url: String,
     val milestones_url: String,
-    val mirror_url: Any,
+    val mirror_url: String?,
     val name: String,
     val network_count: Int,
     val node_id: String,
@@ -73,12 +77,11 @@ data class Repo(
     val svn_url: String,
     val tags_url: String,
     val teams_url: String,
-    val temp_clone_token: Any,
-    val topics: List<Any>,
+    val topics: List<String>,
     val trees_url: String,
     val updated_at: String,
     val url: String,
     val visibility: String,
     val watchers: Int,
     val watchers_count: Int
-)
+) : Parcelable
