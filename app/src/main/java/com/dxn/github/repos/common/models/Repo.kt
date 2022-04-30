@@ -51,7 +51,6 @@ data class Repo(
     val labels_url: String,
     val language: String,
     val languages_url: String,
-    val license: License,
     val merges_url: String,
     val milestones_url: String,
     val mirror_url: String?,
