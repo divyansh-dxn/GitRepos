@@ -2,11 +2,11 @@ package com.dxn.github.repos.data
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
+import com.dxn.github.repos.common.models.Organization
 import com.dxn.github.repos.data.GithubRepositoryImpl.Companion.NETWORK_PAGE_SIZE
 import com.dxn.github.repos.data.api.GithubApi
 import com.dxn.github.repos.common.models.Repo
-import com.dxn.github.repos.common.util.Organization
-import com.dxn.github.repos.common.util.RepoSort
+import com.dxn.github.repos.common.models.RepoSort
 import retrofit2.HttpException
 import java.io.IOException
 

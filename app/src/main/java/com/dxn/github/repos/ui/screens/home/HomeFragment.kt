@@ -12,12 +12,13 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dxn.github.repos.R
-import com.dxn.github.repos.common.util.Organization
-import com.dxn.github.repos.common.util.RepoSort
+import com.dxn.github.repos.common.models.Organization
+import com.dxn.github.repos.common.models.RepoSort
 import com.dxn.github.repos.databinding.HomeFragmentBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.distinctUntilChanged
+import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
 class HomeFragment : Fragment() {
@@ -64,7 +65,7 @@ class HomeFragment : Fragment() {
             repoItemsRv.layoutManager = LinearLayoutManager(requireContext())
             repoItemsRv.adapter = adapter
         }
-        lifecycleScope.launchWhenCreated {
+        lifecycleScope.launch {
             viewModel.getData(Organization.JETBRAINS, RepoSort.UPDATED).distinctUntilChanged()
                 .collectLatest { adapter.submitData(it) }
         }

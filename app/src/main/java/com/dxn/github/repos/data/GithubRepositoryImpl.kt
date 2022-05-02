@@ -4,10 +4,10 @@ import android.util.Log
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
+import com.dxn.github.repos.common.models.Organization
 import com.dxn.github.repos.common.util.Resource
 import com.dxn.github.repos.common.models.Repo
-import com.dxn.github.repos.common.util.Organization
-import com.dxn.github.repos.common.util.RepoSort
+import com.dxn.github.repos.common.models.RepoSort
 import com.dxn.github.repos.data.api.GithubApi
 import com.dxn.github.repos.data.api.GithubUserContentApi
 import com.dxn.github.repos.domain.repositories.GithubRepository
