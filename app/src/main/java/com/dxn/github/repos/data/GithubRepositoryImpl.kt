@@ -4,10 +4,8 @@ import android.util.Log
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
-import com.dxn.github.repos.common.models.Organization
 import com.dxn.github.repos.common.util.Resource
 import com.dxn.github.repos.common.models.Repo
-import com.dxn.github.repos.common.models.RepoSort
 import com.dxn.github.repos.data.api.GithubApi
 import com.dxn.github.repos.data.api.GithubUserContentApi
 import com.dxn.github.repos.domain.repositories.GithubRepository
@@ -18,12 +16,12 @@ class GithubRepositoryImpl(
     private val api: GithubApi,
     private val contentApi: GithubUserContentApi
 ) : GithubRepository {
-    override fun getAllRepos(orgName: Organization, sort: RepoSort): Flow<PagingData<Repo>> = Pager(
+    override fun getAllRepos(orgName: String, sortBy: String): Flow<PagingData<Repo>> = Pager(
         config = PagingConfig(
             pageSize = NETWORK_PAGE_SIZE,
             enablePlaceholders = false
         ),
-        pagingSourceFactory = { ReposPagingSource(api, orgName) }
+        pagingSourceFactory = { ReposPagingSource(api, orgName,sortBy) }
     ).flow
 
     override suspend fun getReadme(repo: Repo) = flow<Resource<String>> {

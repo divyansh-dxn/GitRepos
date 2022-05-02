@@ -9,4 +9,32 @@
         <item>reply</item>
         <item>reply_all</item>
     </string-array>
+
+<!--    Organizations preferences-->
+    <string-array name="organization_entries">
+        <item>JetBrains</item>
+        <item>Square</item>
+        <item>Slack</item>
+    </string-array>
+
+    <string-array name="organization_values">
+        <item>JetBrains</item>
+        <item>Square</item>
+        <item>slackhq</item>
+    </string-array>
+
+
+<!--    Sort preferences-->
+    <string-array name="sort_entries">
+        <item>Updated</item>
+        <item>Created</item>
+        <item>Pushed</item>
+        <item>Full name</item>
+    </string-array>
+    <string-array name="sort_values">
+        <item>updated</item>
+        <item>created</item>
+        <item>pushed</item>
+        <item>full_name</item>
+    </string-array>
 </resources>

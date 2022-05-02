@@ -10,10 +10,9 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
+import androidx.preference.PreferenceManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.dxn.github.repos.R
-import com.dxn.github.repos.common.models.Organization
-import com.dxn.github.repos.common.models.RepoSort
 import com.dxn.github.repos.databinding.HomeFragmentBinding
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
@@ -65,8 +64,11 @@ class HomeFragment : Fragment() {
             repoItemsRv.layoutManager = LinearLayoutManager(requireContext())
             repoItemsRv.adapter = adapter
         }
+        val sp = PreferenceManager.getDefaultSharedPreferences(requireContext())
+        val sortBy = sp.getString("sort_by","updated")!!
+        val organization = sp.getString("organization","Jetbrains")!!
         lifecycleScope.launch {
-            viewModel.getData(Organization.JETBRAINS, RepoSort.UPDATED).distinctUntilChanged()
+            viewModel.getData(organization, sortBy).distinctUntilChanged()
                 .collectLatest { adapter.submitData(it) }
         }
     }

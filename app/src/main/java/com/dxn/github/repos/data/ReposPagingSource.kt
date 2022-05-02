@@ -2,18 +2,16 @@ package com.dxn.github.repos.data
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.dxn.github.repos.common.models.Organization
+import com.dxn.github.repos.common.models.Repo
 import com.dxn.github.repos.data.GithubRepositoryImpl.Companion.NETWORK_PAGE_SIZE
 import com.dxn.github.repos.data.api.GithubApi
-import com.dxn.github.repos.common.models.Repo
-import com.dxn.github.repos.common.models.RepoSort
 import retrofit2.HttpException
 import java.io.IOException
 
 class ReposPagingSource(
     private val api: GithubApi,
-    private val orgName: Organization = Organization.JETBRAINS,
-    private val repoSort: RepoSort = RepoSort.UPDATED
+    private val orgName: String,
+    private val repoSort: String
 ) : PagingSource<Int, Repo>() {
     override fun getRefreshKey(state: PagingState<Int, Repo>): Int? {
         return state.anchorPosition?.let { anchorPosition ->
@@ -25,7 +23,7 @@ class ReposPagingSource(
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Repo> {
         val page = params.key ?: GITHUB_STARTING_PAGE_INDEX
         return try {
-            val repos = api.getRepos(orgName(),page,params.loadSize,repoSort())
+            val repos = api.getRepos(orgName,page,params.loadSize,repoSort)
             val nextKey = if (repos.isEmpty()) {
                 null
             } else {
