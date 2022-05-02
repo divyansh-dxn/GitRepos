@@ -15,15 +15,8 @@ import kotlinx.coroutines.flow.flow
 class GithubRepositoryImpl(
     private val api: GithubApi,
 ) : GithubRepository {
-    override fun getAllRepos(orgName: String, sortBy: String): Flow<PagingData<Repo>> = Pager(
-        config = PagingConfig(
-            pageSize = NETWORK_PAGE_SIZE,
-            enablePlaceholders = false
-        ),
-        pagingSourceFactory = { ReposPagingSource(api, orgName, sortBy) }
-    ).flow
 
-    override suspend fun getReadme(repo: Repo) = flow<Resource<Readme>> {
+    override fun getReadme(repo: Repo) = flow<Resource<Readme>> {
         emit(Resource.Loading())
         runCatching {
             val readme = api.getReadme(repo.owner.login, repo.name)
@@ -34,16 +27,13 @@ class GithubRepositoryImpl(
         }
     }
 
-//    override suspend fun getRepoDetails(userName: String, repoName: String) = flow<Resource<Repo>> {
-//        emit(Resource.Loading())
-//        runCatching {
-//            val repo = api.getRepo(userName, repoName)
-//            emit(Resource.Success(repo))
-//        }.getOrElse {
-//            Log.e(TAG, "getRepoDetails: ", it)
-//            emit(Resource.Failure(it.message.toString()))
-//        }
-//    }
+    override fun searchRepos(query: String, sort: String): Flow<PagingData<Repo>> =
+        Pager(config = PagingConfig(
+            pageSize = NETWORK_PAGE_SIZE,
+            enablePlaceholders = false
+        ),
+            pagingSourceFactory = { SearchPagingSource(api, query, sort) }
+        ).flow
 
     companion object {
         private const val TAG = "GITHUB_REPOSITORY"

@@ -26,15 +26,15 @@
 
 <!--    Sort preferences-->
     <string-array name="sort_entries">
+        <item>Stars</item>
+        <item>Forks</item>
+        <item>Help wanted issues</item>
         <item>Updated</item>
-        <item>Created</item>
-        <item>Pushed</item>
-        <item>Full name</item>
     </string-array>
     <string-array name="sort_values">
+        <item>stars</item>
+        <item>forks</item>
+        <item>help-wanted-issues</item>
         <item>updated</item>
-        <item>created</item>
-        <item>pushed</item>
-        <item>full_name</item>
     </string-array>
 </resources>

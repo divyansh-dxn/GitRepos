@@ -73,7 +73,7 @@ class HomeFragment : Fragment() {
         val sortBy = sp.getString("sort_by","updated")!!
         val organization = sp.getString("organization","Jetbrains")!!
         lifecycleScope.launch {
-            viewModel.getData(organization, sortBy).distinctUntilChanged()
+            viewModel.searchRepos(organization, sortBy).distinctUntilChanged()
                 .collectLatest {
                     adapter.submitData(it)
                 }

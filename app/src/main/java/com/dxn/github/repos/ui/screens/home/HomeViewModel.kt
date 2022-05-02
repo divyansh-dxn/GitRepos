@@ -15,7 +15,7 @@ class HomeViewModel
 @Inject
 constructor(private val repository: GithubRepository) : ViewModel() {
 
-    fun getData(organization: String, repoSort: String) : Flow<PagingData<Repo>> =
-        repository.getAllRepos(organization,repoSort).cachedIn(viewModelScope)
+    fun searchRepos(query: String, sort: String): Flow<PagingData<Repo>> =
+        repository.searchRepos(query, sort).cachedIn(viewModelScope)
 
 }

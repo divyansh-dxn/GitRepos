@@ -5,7 +5,7 @@
         app:title="General">
 
         <ListPreference
-            app:defaultValue="updated"
+            app:defaultValue="stars"
             app:entries="@array/sort_entries"
             app:entryValues="@array/sort_values"
             app:key="sort_by"
