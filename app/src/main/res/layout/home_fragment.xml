@@ -28,4 +28,13 @@
         android:layout_weight="1"
         tools:listitem="@layout/repo_item" />
 
+    <ProgressBar
+        android:visibility="gone"
+        tools:visibility="visible"
+        android:id="@+id/progress_repo"
+        android:layout_marginBottom="16dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
 </LinearLayout>

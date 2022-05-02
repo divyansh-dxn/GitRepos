@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.hilt.navigation.fragment.hiltNavGraphViewModels
 import androidx.lifecycle.lifecycleScope
@@ -57,6 +58,10 @@ class HomeFragment : Fragment() {
                             navController.navigate(R.id.action_homeFragment_to_settingsFragment)
                             true
                         }
+                        R.id.search -> {
+                            Toast.makeText(requireContext(),"Coming soon...",Toast.LENGTH_SHORT).show()
+                            true
+                        }
                         else -> false
                     }
                 }
@@ -69,7 +74,9 @@ class HomeFragment : Fragment() {
         val organization = sp.getString("organization","Jetbrains")!!
         lifecycleScope.launch {
             viewModel.getData(organization, sortBy).distinctUntilChanged()
-                .collectLatest { adapter.submitData(it) }
+                .collectLatest {
+                    adapter.submitData(it)
+                }
         }
     }
 }
