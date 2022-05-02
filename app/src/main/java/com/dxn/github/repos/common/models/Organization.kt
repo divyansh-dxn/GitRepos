@@ -1,4 +1,4 @@
-package com.dxn.github.repos.common.util
+package com.dxn.github.repos.common.models
 
 sealed class Organization {
     object JETBRAINS : Organization() {
