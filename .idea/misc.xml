@@ -7,10 +7,13 @@
         <entry key="app/src/main/res/layout/details_fragment.xml" value="0.1515625" />
         <entry key="app/src/main/res/layout/home_fragment.xml" value="0.209375" />
         <entry key="app/src/main/res/layout/repo_item.xml" value="0.209375" />
+        <entry key="app/src/main/res/layout/settings_fragment.xml" value="0.18547008547008548" />
         <entry key="app/src/main/res/menu/action_menu.xml" value="0.25" />
         <entry key="app/src/main/res/menu/details_action_menu.xml" value="0.18547008547008548" />
         <entry key="app/src/main/res/menu/home_action_menu.xml" value="0.18547008547008548" />
+        <entry key="app/src/main/res/menu/sort_menu.xml" value="0.25" />
         <entry key="app/src/main/res/menu/top_app_bar.xml" value="0.18547008547008548" />
+        <entry key="app/src/main/res/xml/root_preferences.xml" value="0.1831223628691983" />
       </map>
     </option>
   </component>
